@@ -61,7 +61,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/book', bookRef.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/book', bookRef.id, 'edit']" class="btn btn-primary" *jhiHasAnyAuthority="'ROLE_ADMIN'">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

@@ -9,6 +9,8 @@ import { SortByDirective, SortDirective, SortService, type SortState, sortStateS
 import { ItemCountComponent } from 'app/shared/pagination';
 import { FormsModule } from '@angular/forms';
 
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
+
 import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
 import { DEFAULT_SORT_DATA, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
 import { IBookLocation } from '../book-location.model';
@@ -18,7 +20,7 @@ import { BookLocationDeleteDialogComponent } from '../delete/book-location-delet
 @Component({
   selector: 'jhi-book-location',
   templateUrl: './book-location.component.html',
-  imports: [RouterModule, FormsModule, SharedModule, SortDirective, SortByDirective, ItemCountComponent],
+  imports: [RouterModule, FormsModule, SharedModule, SortDirective, SortByDirective, ItemCountComponent, HasAnyAuthorityDirective],
 })
 export class BookLocationComponent implements OnInit {
   subscription: Subscription | null = null;

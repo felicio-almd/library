@@ -15,10 +15,12 @@ import { IBookCategory } from '../book-category.model';
 import { BookCategoryService, EntityArrayResponseType } from '../service/book-category.service';
 import { BookCategoryDeleteDialogComponent } from '../delete/book-category-delete-dialog.component';
 
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
+
 @Component({
   selector: 'jhi-book-category',
   templateUrl: './book-category.component.html',
-  imports: [RouterModule, FormsModule, SharedModule, SortDirective, SortByDirective, ItemCountComponent],
+  imports: [RouterModule, FormsModule, SharedModule, SortDirective, SortByDirective, ItemCountComponent, HasAnyAuthorityDirective],
 })
 export class BookCategoryComponent implements OnInit {
   subscription: Subscription | null = null;

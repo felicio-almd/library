@@ -15,10 +15,12 @@ import { IBook } from '../book.model';
 import { BookService, EntityArrayResponseType } from '../service/book.service';
 import { BookDeleteDialogComponent } from '../delete/book-delete-dialog.component';
 
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
+
 @Component({
   selector: 'jhi-book',
   templateUrl: './book.component.html',
-  imports: [RouterModule, FormsModule, SharedModule, SortDirective, SortByDirective, ItemCountComponent],
+  imports: [RouterModule, FormsModule, SharedModule, SortDirective, SortByDirective, ItemCountComponent, HasAnyAuthorityDirective],
 })
 export class BookComponent implements OnInit {
   subscription: Subscription | null = null;

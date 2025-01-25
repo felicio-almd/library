@@ -9,6 +9,7 @@
       </button>
 
       <button
+        *jhiHasAnyAuthority="'ROLE_ADMIN'"
         id="jh-create-entity"
         data-cy="entityCreateButton"
         class="btn btn-primary jh-create-entity create-book"
@@ -70,11 +71,11 @@
                 <fa-icon icon="eye"></fa-icon>
                 <span jhiTranslate="entity.action.view">View</span>
               </a>
-              <a [routerLink]="['/book', book.id, 'edit']" class="btn btn-sm btn-outline-primary">
+              <a [routerLink]="['/book', book.id, 'edit']" class="btn btn-sm btn-outline-primary" *jhiHasAnyAuthority="'ROLE_ADMIN'">
                 <fa-icon icon="pencil-alt"></fa-icon>
                 <span jhiTranslate="entity.action.edit">Edit</span>
               </a>
-              <button type="button" (click)="delete(book)" class="btn btn-sm btn-outline-danger">
+              <button type="button" (click)="delete(book)" class="btn btn-sm btn-outline-danger" *jhiHasAnyAuthority="'ROLE_ADMIN'">
                 <fa-icon icon="times"></fa-icon>
                 <span jhiTranslate="entity.action.delete">Delete</span>
               </button>

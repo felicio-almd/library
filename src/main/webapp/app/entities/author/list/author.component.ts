@@ -17,10 +17,21 @@ import { AuthorService, EntityArrayResponseType } from '../service/author.servic
 import { AuthorDeleteDialogComponent } from '../delete/author-delete-dialog.component';
 import { IAuthor } from '../author.model';
 
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
+
 @Component({
   selector: 'jhi-author',
   templateUrl: './author.component.html',
-  imports: [RouterModule, FormsModule, SharedModule, SortDirective, SortByDirective, FormatMediumDatetimePipe, InfiniteScrollDirective],
+  imports: [
+    RouterModule,
+    FormsModule,
+    SharedModule,
+    SortDirective,
+    SortByDirective,
+    FormatMediumDatetimePipe,
+    InfiniteScrollDirective,
+    HasAnyAuthorityDirective,
+  ],
 })
 export class AuthorComponent implements OnInit {
   subscription: Subscription | null = null;
