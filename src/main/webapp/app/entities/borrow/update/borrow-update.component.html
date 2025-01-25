@@ -70,7 +70,7 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" for="field_user" jhiTranslate="libraryApp.borrow.user">User</label>
+          <label class="form-label" for="field_user">Borrow for:</label>
           <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
             <option *ngFor="let user of usersSharedCollection" [ngValue]="user">{{ user?.login }}</option>
           </select>

@@ -69,7 +69,6 @@ public class BorrowResource {
             throw new BadRequestAlertException("A new borrow cannot already have an ID", "borrow", "idexists");
         }
 
-        // Verifica se o livro está associado ao empréstimo
         if (borrow.getBook() == null || borrow.getBook().getId() == null) {
             throw new BadRequestAlertException("O empréstimo deve estar associado a um livro válido", "borrow", "booknotfound");
         }
@@ -77,16 +76,16 @@ public class BorrowResource {
         Book book = bookRepository.findById(borrow.getBook().getId())
             .orElseThrow(() -> new BadRequestAlertException("Livro não encontrado", "book", "notfound"));
 
-        // Verifica se há cópias disponíveis para o livro
+
         int availableCopies = book.getAvailableCopies();
         if (availableCopies > 0) {
-            book.setAvailableCopies(availableCopies - 1); // Reduz uma cópia disponível
-            bookRepository.save(book); // Atualiza o livro no banco de dados
+            book.setAvailableCopies(availableCopies - 1);
+            bookRepository.save(book);
         } else {
             throw new IllegalStateException("Não há cópias disponíveis para este livro");
         }
 
-        // Salva o registro do empréstimo
+        // registro do emprestimo
         Borrow savedBorrow = borrowRepository.save(borrow);
 
         return ResponseEntity.created(new URI("/api/borrows/" + savedBorrow.getId()))

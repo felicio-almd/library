@@ -29,12 +29,12 @@
       <span jhiTranslate="libraryApp.borrow.home.notFound">No Borrows found</span>
     </div>
   } @else {
-    <div class="table-responsive table-entities" id="entities">
+    <div class="table-responsive table-entities rounded" id="entities">
       <div class="container">
         <div class="row" infinite-scroll (scrolled)="loadNextPage()" [infiniteScrollDisabled]="!hasMorePage()" [infiniteScrollDistance]="0">
           @for (borrow of borrows(); track trackId(borrow)) {
-          <div class="col-md-4 mb-4">
-            <div class="card shadow-sm h-100">
+          <div class="col-md-4 mb-4 rounded">
+            <div class="card shadow-sm h-100 rounded">
               <div class="card-body">
                 <h5 class="card-title">
                   <a [routerLink]="['/borrow', borrow.id, 'view']" class="text-decoration-none">ID: {{ borrow.id }}</a>
