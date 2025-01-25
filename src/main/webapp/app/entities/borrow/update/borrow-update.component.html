@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-borrow-heading" data-cy="BorrowCreateUpdateHeading" jhiTranslate="libraryApp.borrow.home.createOrEditLabel">
+        Create or edit a Borrow
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="libraryApp.borrow.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let borrowDateTimeRef = editForm.get('borrowDateTime')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_borrowDateTime" jhiTranslate="libraryApp.borrow.borrowDateTime">Borrow Date Time</label>
+          <div class="d-flex">
+            <input
+              id="field_borrowDateTime"
+              data-cy="borrowDateTime"
+              type="datetime-local"
+              class="form-control"
+              name="borrowDateTime"
+              formControlName="borrowDateTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (borrowDateTimeRef.invalid && (borrowDateTimeRef.dirty || borrowDateTimeRef.touched)) {
+            <div>
+              @if (editForm.get('borrowDateTime')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('borrowDateTime')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_returnDateTime" jhiTranslate="libraryApp.borrow.returnDateTime">Return Date Time</label>
+          <div class="d-flex">
+            <input
+              id="field_returnDateTime"
+              data-cy="returnDateTime"
+              type="datetime-local"
+              class="form-control"
+              name="returnDateTime"
+              formControlName="returnDateTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_book" jhiTranslate="libraryApp.borrow.book">Book</label>
+          <select class="form-control" id="field_book" data-cy="book" name="book" formControlName="book" [compareWith]="compareBook">
+            <option [ngValue]="null"></option>
+            @for (bookOption of booksSharedCollection; track $index) {
+              <option [ngValue]="bookOption">{{ bookOption.title }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_user" jhiTranslate="libraryApp.borrow.user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            <option *ngFor="let user of usersSharedCollection" [ngValue]="user">{{ user?.login }}</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

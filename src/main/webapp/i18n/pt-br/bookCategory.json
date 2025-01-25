@@ -1,0 +1,26 @@
+{
+  "libraryApp": {
+    "bookCategory": {
+      "home": {
+        "title": "Book Categories",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Book Category",
+        "createOrEditLabel": "Criar ou editar Book Category",
+        "notFound": "Nenhum Book Category encontrado"
+      },
+      "created": "Um novo Book Category foi criado com o identificador {{ param }}",
+      "updated": "Um Book Category foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Book Category foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Book Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Book Category"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "books": "Books"
+    }
+  }
+}

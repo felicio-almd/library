@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (book(); as bookRef) {
+      <div>
+        <h2 data-cy="bookDetailsHeading"><span jhiTranslate="libraryApp.book.detail.title">Book</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ bookRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="libraryApp.book.title">Title</span></dt>
+          <dd>
+            <span>{{ bookRef.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="libraryApp.book.publicationYear">Publication Year</span></dt>
+          <dd>
+            <span>{{ bookRef.publicationYear }}</span>
+          </dd>
+          <dt><span jhiTranslate="libraryApp.book.totalCopies">Total Copies</span></dt>
+          <dd>
+            <span>{{ bookRef.totalCopies }}</span>
+          </dd>
+          <dt><span jhiTranslate="libraryApp.book.availableCopies">Available Copies</span></dt>
+          <dd>
+            <span>{{ bookRef.availableCopies }}</span>
+          </dd>
+          <dt><span jhiTranslate="libraryApp.book.location">Location</span></dt>
+          <dd>
+            @if (book()!.location) {
+              <div>
+                <a [routerLink]="['/book-location', book()!.location?.id, 'view']">{{ bookRef.location?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="libraryApp.book.authors">Authors</span></dt>
+          <dd>
+            @if (book()!.authors) {
+              <div>
+                <a [routerLink]="['/author', book()!.authors?.id, 'view']">{{ bookRef.authors?.name }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="libraryApp.book.categories">Categories</span></dt>
+          <dd>
+            @if (book()!.categories) {
+              <div>
+                <a [routerLink]="['/book-category', book()!.categories?.id, 'view']">{{ bookRef.categories?.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/book', bookRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,45 @@
+entity Book {
+  title String required
+  publicationYear Integer required
+  totalCopies Integer required
+  availableCopies Integer required
+}
+
+entity BookCategory {
+  name String required minlength(3)
+  description String
+}
+
+entity Author {
+  name String required minlength(3)
+  birthDate Instant
+}
+
+entity Borrow {
+  borrowDateTime Instant required
+  returnDateTime Instant
+}
+
+entity BookLocation {
+  aisle String required
+  shelf String required
+}
+
+relationship OneToOne {
+  Book{location} to BookLocation{book}
+}
+
+relationship ManyToOne {
+  Borrow{book(title)} to Book
+  Borrow{user(login)} to User with builtInEntity
+}
+
+relationship OneToMany {
+  Author{books} to Book{authors(name)}
+  BookCategory{books} to Book{categories(name)}
+}
+
+
+paginate Book, BookCategory, BookLocation with pagination
+paginate Author, Borrow with infinite-scroll
+

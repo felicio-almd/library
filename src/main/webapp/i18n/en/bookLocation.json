@@ -1,0 +1,26 @@
+{
+  "libraryApp": {
+    "bookLocation": {
+      "home": {
+        "title": "Book Locations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Book Location",
+        "createOrEditLabel": "Create or edit a Book Location",
+        "notFound": "No Book Locations found"
+      },
+      "created": "A new Book Location is created with identifier {{ param }}",
+      "updated": "A Book Location is updated with identifier {{ param }}",
+      "deleted": "A Book Location is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Book Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Book Location"
+      },
+      "id": "ID",
+      "aisle": "Aisle",
+      "shelf": "Shelf",
+      "book": "Book"
+    }
+  }
+}

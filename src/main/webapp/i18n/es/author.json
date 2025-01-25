@@ -1,0 +1,26 @@
+{
+  "libraryApp": {
+    "author": {
+      "home": {
+        "title": "Authors",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Author",
+        "createOrEditLabel": "Crear o editar Author",
+        "notFound": "Ningún Authors encontrado"
+      },
+      "created": "Un nuevo Author ha sido creado con el identificador {{ param }}",
+      "updated": "Un Author ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Author ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Author {{ id }}?"
+      },
+      "detail": {
+        "title": "Author"
+      },
+      "id": "ID",
+      "name": "Name",
+      "birthDate": "Birth Date",
+      "books": "Books"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20250124165941"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "aisle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "shelf",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "BookLocation",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "book",
+      "otherEntityRelationshipName": "location",
+      "relationshipName": "book",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

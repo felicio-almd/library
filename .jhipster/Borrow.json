@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20250124165942"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "borrowDateTime",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "returnDateTime",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Borrow",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "book",
+      "relationshipName": "book",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipWithBuiltInEntity": true
+    }
+  ],
+  "searchEngine": "no"
+}

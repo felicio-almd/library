@@ -1,0 +1,78 @@
+<div>
+  <h2 id="page-heading" data-cy="BorrowHeading">
+    <span jhiTranslate="libraryApp.borrow.home.title">Borrows</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="libraryApp.borrow.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-borrow"
+        [routerLink]="['/borrow/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="libraryApp.borrow.home.createLabel">Create a new Borrow</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (borrows().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="libraryApp.borrow.home.notFound">No Borrows found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <div class="container">
+        <div class="row" infinite-scroll (scrolled)="loadNextPage()" [infiniteScrollDisabled]="!hasMorePage()" [infiniteScrollDistance]="0">
+          @for (borrow of borrows(); track trackId(borrow)) {
+          <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a [routerLink]="['/borrow', borrow.id, 'view']" class="text-decoration-none">ID: {{ borrow.id }}</a>
+                </h5>
+                <p class="card-text">
+                  <strong jhiTranslate="libraryApp.borrow.borrowDateTime">Borrow Date Time:</strong>
+                  {{ borrow.borrowDateTime | formatMediumDatetime }}<br>
+                  <strong jhiTranslate="libraryApp.borrow.returnDateTime">Return Date Time:</strong>
+                  {{ borrow.returnDateTime | formatMediumDatetime }}<br>
+                  <strong jhiTranslate="libraryApp.borrow.book">Book:</strong>
+                  @if (borrow.book) {
+                  <a [routerLink]="['/book', borrow.book.id, 'view']" class="text-decoration-none" innerHTML="{{ borrow.book.title }}"></a><br>
+                  }
+                  <strong>Borrow for:</strong>
+                  {{ borrow.user?.login }}
+                </p>
+                <div class="text-end">
+                  <div class="btn-group">
+                    <a [routerLink]="['/borrow', borrow.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                      <fa-icon icon="eye"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                    </a>
+                    <a [routerLink]="['/borrow', borrow.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                      <fa-icon icon="pencil-alt"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                    </a>
+                    <button type="submit" (click)="delete(borrow)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                      <fa-icon icon="times"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,110 @@
+<div>
+  <h2 id="page-heading" data-cy="BookHeading">
+    <span jhiTranslate="libraryApp.book.home.title">Books</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="libraryApp.book.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-book"
+        [routerLink]="['/book/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="libraryApp.book.home.createLabel">Create a new Book</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (books().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="libraryApp.book.home.notFound">No Books found</span>
+    </div>
+  } @else {
+  <div class="container">
+    <div class="row" id="entities">
+  @for (book of books(); track trackId(book)) {
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">
+              <a [routerLink]="['/book', book.id, 'view']" innerHTML="{{ book.title }}"></a>
+            </h5>
+            <p class="card-text flex-grow-1">
+              <strong jhiTranslate="global.field.id">ID:</strong> {{ book.id }}<br>
+              <strong jhiTranslate="libraryApp.book.publicationYear">Publication Year:</strong> {{ book.publicationYear }}<br>
+              <strong jhiTranslate="libraryApp.book.totalCopies">Total Copies:</strong> {{ book.totalCopies }}<br>
+              <strong jhiTranslate="libraryApp.book.availableCopies">Available Copies:</strong> {{ book.availableCopies }}<br>
+              <strong jhiTranslate="libraryApp.book.location">Location:</strong>
+              @if (book.location) {
+              <span>
+                <a [routerLink]="['/book-location', book.location.id, 'view']">{{ book.location.id }}</a>
+              </span>
+              }
+              <br>
+              <strong jhiTranslate="libraryApp.book.authors">Authors:</strong>
+              @if (book.authors) {
+              <span>
+                <a [routerLink]="['/author', book.authors.id, 'view']">{{ book.authors.name }}</a>
+              </span>
+              }
+              <br>
+              <strong jhiTranslate="libraryApp.book.categories">Categories:</strong>
+              @if (book.categories) {
+              <span>
+                <a [routerLink]="['/book-category', book.categories.id, 'view']">{{ book.categories.name }}</a>
+              </span>
+              }
+            </p>
+            <!-- Botões no final -->
+            <div class="btn-group mt-2">
+              <a [routerLink]="['/book', book.id, 'view']" class="btn btn-sm btn-outline-info">
+                <fa-icon icon="eye"></fa-icon>
+                <span jhiTranslate="entity.action.view">View</span>
+              </a>
+              <a [routerLink]="['/book', book.id, 'edit']" class="btn btn-sm btn-outline-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span jhiTranslate="entity.action.edit">Edit</span>
+              </a>
+              <button type="button" (click)="delete(book)" class="btn btn-sm btn-outline-danger">
+                <fa-icon icon="times"></fa-icon>
+                <span jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+    </div>
+  </div>
+
+
+  }
+  @if (books().length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

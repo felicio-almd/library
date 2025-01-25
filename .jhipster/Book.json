@@ -1,0 +1,56 @@
+{
+  "annotations": {
+    "changelogDate": "20250124165939"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "publicationYear",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "totalCopies",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "availableCopies",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Book",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "bookLocation",
+      "otherEntityRelationshipName": "book",
+      "relationshipName": "location",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "author",
+      "otherEntityRelationshipName": "books",
+      "relationshipName": "authors",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "bookCategory",
+      "otherEntityRelationshipName": "books",
+      "relationshipName": "categories",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

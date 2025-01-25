@@ -1,0 +1,27 @@
+{
+  "libraryApp": {
+    "borrow": {
+      "home": {
+        "title": "Borrows",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Borrow",
+        "createOrEditLabel": "Criar ou editar Borrow",
+        "notFound": "Nenhum Borrow encontrado"
+      },
+      "created": "Um novo Borrow foi criado com o identificador {{ param }}",
+      "updated": "Um Borrow foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Borrow foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Borrow {{ id }}?"
+      },
+      "detail": {
+        "title": "Borrow"
+      },
+      "id": "ID",
+      "borrowDateTime": "Borrow Date Time",
+      "returnDateTime": "Return Date Time",
+      "book": "Book",
+      "user": "User"
+    }
+  }
+}

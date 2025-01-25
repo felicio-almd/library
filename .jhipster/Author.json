@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20250124165938"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "3"
+    },
+    {
+      "fieldName": "birthDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Author",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "book",
+      "otherEntityRelationshipName": "authors",
+      "relationshipName": "books",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

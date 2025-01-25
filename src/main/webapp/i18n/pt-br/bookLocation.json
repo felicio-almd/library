@@ -1,0 +1,26 @@
+{
+  "libraryApp": {
+    "bookLocation": {
+      "home": {
+        "title": "Book Locations",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Book Location",
+        "createOrEditLabel": "Criar ou editar Book Location",
+        "notFound": "Nenhum Book Location encontrado"
+      },
+      "created": "Um novo Book Location foi criado com o identificador {{ param }}",
+      "updated": "Um Book Location foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Book Location foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Book Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Book Location"
+      },
+      "id": "ID",
+      "aisle": "Aisle",
+      "shelf": "Shelf",
+      "book": "Book"
+    }
+  }
+}

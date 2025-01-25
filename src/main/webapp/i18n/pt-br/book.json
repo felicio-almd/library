@@ -1,0 +1,30 @@
+{
+  "libraryApp": {
+    "book": {
+      "home": {
+        "title": "Books",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Book",
+        "createOrEditLabel": "Criar ou editar Book",
+        "notFound": "Nenhum Book encontrado"
+      },
+      "created": "Um novo Book foi criado com o identificador {{ param }}",
+      "updated": "Um Book foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Book foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Book {{ id }}?"
+      },
+      "detail": {
+        "title": "Book"
+      },
+      "id": "ID",
+      "title": "Title",
+      "publicationYear": "Publication Year",
+      "totalCopies": "Total Copies",
+      "availableCopies": "Available Copies",
+      "location": "Location",
+      "authors": "Authors",
+      "categories": "Categories"
+    }
+  }
+}
